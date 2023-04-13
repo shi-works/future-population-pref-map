@@ -134,7 +134,7 @@
         let protocol = new pmtiles.Protocol();
         maplibregl.addProtocol("pmtiles", protocol.tile);
 
-        let PM_suikei_jinko_URL = "./suikei_kekka.pmtiles";
+        let PM_suikei_jinko_URL = "https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/future-population/suikei_kekka.pmtiles";
 
         const p = new pmtiles.PMTiles(PM_suikei_jinko_URL)
         p.getMetadata().then((res) => console.log(res));
@@ -144,9 +144,7 @@
 
         var map = new maplibregl.Map({
             container: 'map',
-            // style: './dark.json',
             style: 'https://tile2.openstreetmap.jp/styles/osm-bright/style.json',
-            // style: 'https://api.maptiler.com/maps/darkmatter/style.json?key=8o8Ezu2IQFwmEyfnG3N6',
             center: [139.6226196, 35.4660694], // 中心座標
             zoom: 6, // ズームレベル
             pitch: 0, // 傾き
@@ -197,8 +195,7 @@
             // PMTiles
             map.addSource("pmtiles", {
                 type: "vector",
-                url: "pmtiles://" + PM_suikei_jinko_URL,
-                // attribution: '<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html">指定緊急避難場所データ（国土地理院Webサイト）を加工して作成</a>'
+                url: "pmtiles://" + PM_suikei_jinko_URL
             });
 
             //色分け用のフィルタ準備
@@ -303,7 +300,7 @@
             // PMTiles
             map.addSource("geojson", {
                 type: "geojson",
-                data: "./suikei_kekka_pref_point.geojson"
+                data: "https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/future-population/suikei_kekka_pref_point.geojson"
             });
 
             // ラベル（人口総数）
