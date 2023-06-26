@@ -10,7 +10,7 @@
     <!-- MapLibre -->
     <script src='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js'></script>
     <link href='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css' rel='stylesheet' />
-    <script src="https://unpkg.com/pmtiles@2.9.0/dist/index.js"></script>
+    <script src="https://unpkg.com/pmtiles@2.7.0/dist/index.js"></script>
     <style>
         body {
             margin: 0;
@@ -134,7 +134,8 @@
         let protocol = new pmtiles.Protocol();
         maplibregl.addProtocol("pmtiles", protocol.tile);
 
-        let PM_suikei_jinko_URL = "https://xs489works.xsrv.jp/pmtiles-data/future-population/suikei_kekka.pmtiles";
+        // let PM_suikei_jinko_URL = "https://xs489works.xsrv.jp/pmtiles-data/future-population/suikei_kekka.pmtiles";
+        let PM_suikei_jinko_URL = "https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/future-population/suikei_kekka.pmtiles";
 
         const p = new pmtiles.PMTiles(PM_suikei_jinko_URL)
         p.getMetadata().then((res) => console.log(res));
